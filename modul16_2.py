@@ -13,7 +13,7 @@ async def admin_page() -> dict:
     return {"message": "Вы вошли как администратор"}
 
 @app.get("/user/{user_id}")
-async  def userid_page(user_id:int = Path(ge=1, le=100, description='Enter User ID', example='55')) -> dict:
+async  def userid_page(user_id:Annotated[int, Path(ge=1, le=100, description='Enter User ID', example='55')]) -> dict:
     return {"message": f"Вы вошли как пользователь № {user_id}"}
 
 @app.get("/user/{username}/{age}")
